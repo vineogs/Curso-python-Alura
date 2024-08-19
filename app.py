@@ -6,7 +6,10 @@ restaurantes = [{'nome':'Praça', 'categoria':'japonesa','ativo':False},
 
 def exibir_subtitulo(texto):
     os.system('cls')
+    linha = '*' * (len(texto))
+    print(linha)
     print(texto)
+    print(linha)
     print()
 
 def menu():
@@ -23,10 +26,10 @@ def exibir_titulo():
     ╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░''')
 
 def exibir_opcoes():
-    print('1 - Cadastrar Restaurante')
-    print('2 - Listar Restaurantes')
-    print('3 - Ativar Restaurante')
-    print('4 - Sair\n')
+    print('1. Cadastrar restaurante')
+    print('2. Listar restaurantes')
+    print('3. Alternar estado do restaurante')
+    print('4. Sair\n')
 
 def cadastrar_restaurante():
     exibir_subtitulo('Cadastro de novos restaurantes')
@@ -41,15 +44,15 @@ def cadastrar_restaurante():
     menu()
 
 def listar_restaurantes():
-    exibir_subtitulo('Listando os restaurantes')
+    exibir_subtitulo('Listando restaurantes')
 
+    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status')
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        ativo = restaurante['ativo']
+        ativo = 'ativado' if restaurante['ativo'] else 'desativado'
+        print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
 
-        print(f'- {nome_restaurante} | {categoria} | {ativo}')
-    
     menu()
 
 def alternar_estado_restaurante():
@@ -68,6 +71,7 @@ def alternar_estado_restaurante():
         print('O restaurante não foi encontrado')
 
     menu()
+    
 def finalizar_app():
     exibir_subtitulo('Encerrando Programa')
 
